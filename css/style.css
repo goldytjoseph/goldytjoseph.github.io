@@ -13,6 +13,10 @@ h1,h2,h3,h4,h5,h6{
 	margin:0;
 	font-family: 'Cairo', sans-serif;
 }
+
+.red:hover {
+	color: red;
+}
 ul,label{
 	margin:0;
 	padding:0;
