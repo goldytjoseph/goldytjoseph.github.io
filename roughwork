@@ -1,0 +1,123 @@
+<style>
+.cntr-span {
+display: block !important;
+margin-left: 50%;
+transform: translateX(-50%);
+white-space: nowrap;
+float: left;
+color:#22eaaa!important;
+        }
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script type="text/javascript">
+$( "body" ).addClass( "night" );
+}
+
+function applyDay() {
+$( "body" ).removeClass( "night" );
+      applyNight();
+      createCookie("night",true,999)
+  } else {
+applyDay();
+
+</script>
+
+
+
+      <a href="#down" class=""> <i class="icon-chevron-thin-down"> </i> </a>
+
+
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000000;
+        color: white;
+      }
+
+
+
+
+
+
+            <div class="flex-container">
+              <div class="flex-child">
+                <i id="icon-sun" class="fas fa-sun active"></i>
+                <input type="checkbox" class="toggle-switch">
+                <i id="icon-moon" class="fas fa-moon"></i>
+              </div>
+              <div id="text-box" class="flex-child">
+
+
+                                          <div class="allstars">
+                                            <div class="star1"></div>
+                                            <div class="star2"></div>
+                                            <div class="star3"></div>
+                                            <div class="star4"></div>
+                                            <div class="star5"></div>
+                                            <div class="star6"></div>
+                                            <div class="star7"></div>
+                                            <div class="star8"></div>
+                                            <div class="star9"></div>
+                                            <div class="star10"></div>
+                                            <div class="star11"></div>
+                                            <div class="star12"></div>
+                                            <div class="star13"></div>
+                                            <div class="star14"></div>
+                                            <div class="star15"></div>
+                                            <div class="star16"></div>
+                                            <div class="star17"></div>
+                                            <div class="star18"></div>
+                                            <div class="star19"></div>
+                                            <div class="star20"></div>
+                                            <div class="star21"></div>
+                                            <div class="star22"></div>
+                                            <div class="star23"></div>
+                                            <div class="star24"></div>
+                                            <div class="star25"></div>
+                                            <div class="star26"></div>
+                                            <div class="star27"></div>
+                                            <div class="star28"></div>
+                                            <div class="star29"></div>
+                                            <div class="star30"></div>
+                                            <div class="star31"></div>
+
+                                            </div>
+
+
+    <div id="text-box" class="flex-child">
+
+                                            <!--start of header -->
+                                  <header>
+                                      <div>
+                                          <ul>
+                                            <li> <a href="https://twitter.com/GoldyTJoseph"><i class="icon-twitter2">  </i>  </a>  </li>
+                                            <li> <a href="https://www.facebook.com/Goldytjoseph"><i class="icon-facebook2">  </i>  </a>  </li>
+                                            <li> <a href="https://www.instagram.com/st.badass/"><i class="icon-instagram2"> </i> </a> </li>
+                                            <li> <a href="https://github.com/gol-dy"><i class="icon-github2"> </i> </a> </li>
+                                            <li> <a href="https://www.linkedin.com/in/goldy-t-joseph-5b72b315a/"><i class="icon-linkedin"> </i> </a> </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                                </header>
+                                           <!-- END: header -->
+
+
+
+                                           body {
+                                             background-color: white;
+                                             color: black;
+                                             transition: background-color 0.5s cubic-bezier(0.3, 0.05, 0.25, 1), color 0.5s cubic-bezier(0.3, 0.05, 0.25, 1);
+                                           }
+                                           body h1 {
+                                             color: black;
+                                             transition: color 0.5s cubic-bezier(0.3, 0.05, 0.25, 1);
+                                           }
