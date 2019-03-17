@@ -1,18 +1,37 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Goldy</title>
 
 
 <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
+
+
+<script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+</script>
+<script type="text/javascript">
+      $(document).ready(function(){
+            $('ul').click(function(){
+                  $('body').toggleClass('dark')
+            })
+      })
+
+</script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 
 </head>
-
+<ul>
+            <li>
+                  <span> 🌞 </span>
+                  <span> 🌙 </span>
+            </li>
+      </ul>
+<section>
 <!--start of header -->
 <header>
-<div>
+<div data-position="left" >
 <ul>
 <li> <a href="https://twitter.com/GoldyTJoseph"> twitter</a> </li>
 <li> <a href="https://www.facebook.com/Goldytjoseph"> facebook </a> </li>
@@ -21,8 +40,10 @@
 <li> <a href="https://www.linkedin.com/in/goldy-t-joseph-5b72b315a/"> linkedin </a> </li>
 </ul>
 </div>
-</div>
-</header>
+
+	
+
+
 <!--end of header -->
 
 <body>
@@ -55,6 +76,7 @@
         </footer>
 
 </div>
-
+</section>
 </body>
+
 </html>
