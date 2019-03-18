@@ -71,16 +71,29 @@ body.night .content p
     color: #fff;
 }
 
+.connectme {
+	float: right;
+  margin-top: 1.8em;
+  display: inline-block;
+  vertical-align: middle;
+}
+.connectme i {
+	width:45px;
+	height:45px;
+	display:inline-block;
+	margin-right: 8px;
+}
+
 #social #container {
   text-align: center;
 }
 
 #social #container ul {
-  float: left;
+  float: right;
 }
 
 #social #container ul li {
-  float: left;
+  float: right;
   padding-left: 10px;
   list-style-type: none;
 }
