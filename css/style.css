@@ -71,17 +71,19 @@ body.night .content p
     color: #fff;
 }
 
-#social #container {
-  text-align: center;
-}
-
-#social #container ul {
+#social #socialcontainer {
+  text-align: left;
   float: right;
 }
 
-#social #container ul li {
+#social #socialcontainer ul {
+  
+  text-align: left;
+}
+
+#social #socialcontainer ul li {
   float: right;
   padding-left: 10px;
-  margin-block-end: 2%;
   list-style-type: none;
+  text-align: left;
 }
