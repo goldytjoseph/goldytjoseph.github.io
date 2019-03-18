@@ -15,7 +15,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.toggle').click(function(){
+        $('.toggle').on('click touchstart', function(){
             $('.toggle').toggleClass('active')
             $('body').toggleClass('night')
         })
