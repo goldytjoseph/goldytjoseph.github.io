@@ -27,18 +27,69 @@
     })
 </script>
 
+<script type="text/javascript">
+
+jQuery(document).ready(function($) {
+  setInterval(function() {
+    moveRight();
+  }, 3000);
+
+  var slideCount = $("#slider ul li").length;
+  var slideWidth = $("#slider ul li").width();
+  var slideHeight = $("#slider ul li").height();
+  var sliderUlWidth = slideCount * slideWidth;
+
+  $("#slider").css({ width: slideWidth, height: slideHeight });
+
+  $("#slider ul").css({ width: sliderUlWidth, marginLeft: -slideWidth });
+
+  $("#slider ul li:last-child").prependTo("#slider ul");
+
+  function moveLeft() {
+    $("#slider ul").animate(
+      {
+        left: +slideWidth
+      },
+      200,
+      function() {
+        $("#slider ul li:last-child").prependTo("#slider ul");
+        $("#slider ul").css("left", "");
+      }
+    );
+  }
+
+  function moveRight() {
+    $("#slider ul").animate(
+      {
+        left: -slideWidth
+      },
+      200,
+      function() {
+        $("#slider ul li:first-child").appendTo("#slider ul");
+        $("#slider ul").css("left", "");
+      }
+    );
+  }
+
+  $("a.control_prev").click(function() {
+    moveLeft();
+  });
+
+  $("a.control_next").click(function() {
+    moveRight();
+  });
+});
+
+
+</script>
+
+
 
 </head>
 
-     
 
 
 <header>
-            <div class="toggle">
-                        <span>🌞</span>
-                        <span>🌙</span>
-            </div>
-                     
 
 <!--start of header -->
 <div id="social">
@@ -55,37 +106,71 @@
             </div>
             </div>
 </header>
-      <!--end of header -->
-      
-<body>
-<div class="container">
 
+     
+<div class="toggle">
+            <span>🌞</span>
+            <span>🌙</span>
+</div>
+         
+
+      <!--end of header -->
+
+<body>
+               
+
+<div id="slider">
+
+      <ul>
         <!--start of slider-->
-        <h2> GOLDY THUNDIYIL JOSEPH </h2>
-        <h2> LEO </h2>
-        <h2> INDIAN </h2>
-        <h2> BIG BROTHER </h2>
-        <h2> LOVE LINUX A LOT 🐧 </h2>
-        <h2> OCTOCAT FAN </h2>
-        <h2> LIKE MY TURTLE AND WASP </h2>
-        <h2> HAPPY BEING A GEEK </h2>
-  </div>
+
+            <li> GOLDY THUNDIYIL JOSEPH </li>
+
+      
+
+            <li> LEO </li>
+
+
+
+            <li> INDIAN </li>
+
+
+
+            <li> BIG BROTHER </li>
+
+      
+
+            <li> LOVE LINUX A LOT 🐧 </li>
+
+
+
+            <li> OCTOCAT FAN </li>
+
+
+ 
+            <li> LIKE MY TURTLE AND WASP </li>
+
+
+ 
+            <li> HAPPY BEING A GEEK </li>
+      </ul>
+</div>
         <!--end of slider-->
 
-  <div>
+
+<div class="container">
         <!--start of about-->
  
         <p> a linux lover </p>
         <p> 51mpl3-9uy || py7h0n-l0v3r || 53lf-74u9h7 || kn0wl3d93-l0v3r || 4dd1c73d 70 73rm1n4l </p>
         <p> <small> fanboy of Nikola Tesla | Linus Torvalds | Albert Einstein </small> </p>
         <!--end of about-->
-  </div>
-
-        <footer>
-        <p> <small> property of <a href="#"> pac-man </a> </small> </p>
-        </footer>
-
 </div>
+
+
+<footer>
+<p> <small> property of <a href="#"> pac-man </a> </small> </p>
+</footer>
 </body>
 
 </html>
