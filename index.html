@@ -5,43 +5,50 @@
 <title>Goldy</title>
 
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/style.css">
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+
 <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
 </script>
-<script type="text/javascript">
-      $(document).ready(function(){
-            $('ul').click(function(){
-                  $('body').toggleClass('dark')
-            })
-      })
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.toggle').click(function(){
+            $('.toggle').toggleClass('active')
+            $('body').toggleClass('night')
+        })
+    })
 </script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
 
 </head>
-<ul>
-            <li>
-                  <span> 🌞 </span>
-                  <span> 🌙 </span>
-            </li>
-      </ul>
-<section>
+
+
 <!--start of header -->
 <header>
-<div data-position="left" >
+<div class="toggle">
+      <span class="fixed-top">🌞</span>
+      <span class="fixed-top"> &NonBreakingSpace;</span>
+      <span class="fixed-top"> &NonBreakingSpace;</span>
+      <span class="fixed-top">🌙</span>
+</div>
+
+<div>
 <ul>
-<li> <a href="https://twitter.com/GoldyTJoseph"> twitter</a> </li>
-<li> <a href="https://www.facebook.com/Goldytjoseph"> facebook </a> </li>
-<li> <a href="https://www.instagram.com/st.badass/"> instagram </a> </li>
-<li> <a href="https://github.com/gol-dy"> github </a> </li>
-<li> <a href="https://www.linkedin.com/in/goldy-t-joseph-5b72b315a/"> linkedin </a> </li>
+<li> <a href="https://twitter.com/GoldyTJoseph" class="fa fa-twitter"> </a> </li>
+<li> <a href="https://www.facebook.com/Goldytjoseph" class="fa fa-facebook"> </a> </li>
+<li> <a href="https://www.instagram.com/st.badass/" class="fa fa-instagram"> </a> </li>
+<li> <a href="https://github.com/gol-dy" class="fa fa-github"> </a> </li>
+<li> <a href="https://www.linkedin.com/in/goldy-t-joseph-5b72b315a/" class="fa fa-linkedin"> </a> </li>
 </ul>
 </div>
 
-	
+
+
 
 
 <!--end of header -->
@@ -76,7 +83,7 @@
         </footer>
 
 </div>
-</section>
+
 </body>
 
 </html>
