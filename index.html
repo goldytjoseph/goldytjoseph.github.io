@@ -19,7 +19,7 @@
 			  crossorigin="anonymous"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.toggle').on('click touchstart', function(){
+      $('.toggle').click(function(){
             $('.toggle').toggleClass('active')
             $('body').toggleClass('night')
         })
@@ -96,13 +96,6 @@
       );
     }
   
-    $("a.control_prev").click(function() {
-      moveLeft();
-    });
-  
-    $("a.control_next").click(function() {
-      moveRight();
-    });
   });
   </script>
     
