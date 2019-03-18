@@ -82,5 +82,6 @@ body.night .content p
 #social #container ul li {
   float: right;
   padding-left: 10px;
+  margin-block-end: 2%;
   list-style-type: none;
 }
