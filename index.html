@@ -23,6 +23,62 @@
     })
 </script>
 
+
+<script type="text/javascript"> 
+
+      jQuery(document).ready(function($) {
+        setInterval(function() {
+          moveRight();
+        }, 1500);
+      
+        var slideCount = $("#slider ul li").length;
+        var slideWidth = $("#slider ul li").width();
+        var slideHeight = $("#slider ul li").height();
+        var sliderUlWidth = slideCount * slideWidth;
+      
+        $("#slider").css({ width: slideWidth, height: slideHeight });
+      
+        $("#slider ul").css({ width: sliderUlWidth, marginLeft: -slideWidth });
+      
+        $("#slider ul li:last-child").prependTo("#slider ul");
+      
+        function moveLeft() {
+          $("#slider ul").animate(
+            {
+              left: +slideWidth
+            },
+            200,
+            function() {
+              $("#slider ul li:last-child").prependTo("#slider ul");
+              $("#slider ul").css("left", "");
+            }
+          );
+        }
+      
+        function moveRight() {
+          $("#slider ul").animate(
+            {
+              left: -slideWidth
+            },
+            200,
+            function() {
+              $("#slider ul li:first-child").appendTo("#slider ul");
+              $("#slider ul").css("left", "");
+            }
+          );
+        }
+      
+        $("a.control_prev").click(function() {
+          moveLeft();
+        });
+      
+        $("a.control_next").click(function() {
+          moveRight();
+        });
+      });
+      </script>
+</head>
+
 <header>
             
             
@@ -49,28 +105,49 @@
 </header>
 <!--end of header -->
 
-</head>
+
 
      
 <body>
 
 
+      <div id="slider">
 
-<div class="container">
-
-  <div>
-        <!--start of slider-->
-        <h2> GOLDY THUNDIYIL JOSEPH </h2>
-        <h2> LEO </h2>
-        <h2> INDIAN </h2>
-        <h2> BIG BROTHER </h2>
-        <h2> LOVE LINUX A LOT 🐧 </h2>
-        <h2> OCTOCAT FAN </h2>
-        <h2> LIKE MY TURTLE AND WASP </h2>
-        <h2> HAPPY BEING A GEEK </h2>
-  </div>
-</div>
-        <!--end of slider-->
+            <ul>
+              <!--start of slider-->
+      
+                  <li> GOLDY THUNDIYIL JOSEPH </li>
+      
+            
+      
+                  <li> LEO </li>
+      
+      
+      
+                  <li> INDIAN </li>
+      
+      
+      
+                  <li> BIG BROTHER </li>
+      
+            
+      
+                  <li> LOVE LINUX A LOT 🐧 </li>
+      
+      
+      
+                  <li> OCTOCAT FAN </li>
+      
+      
+       
+                  <li> LIKE MY TURTLE AND WASP </li>
+      
+      
+       
+                  <li> HAPPY BEING A GEEK </li>
+            </ul>
+      </div>
+   <!--end of slider-->
 
   <div>
         <!--start of about-->
