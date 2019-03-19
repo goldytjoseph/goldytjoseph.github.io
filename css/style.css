@@ -74,6 +74,7 @@ body.night .content p
 
 
 #social #socialcontainer {
+  position: relative;
   text-align: left;
 
 }
@@ -89,6 +90,9 @@ body.night .content p
   list-style-type: none;
   text-align: left;
 }
+
+
+
 
 #slider {
     position: relative;
