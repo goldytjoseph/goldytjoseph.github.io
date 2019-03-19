@@ -10,17 +10,16 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 
-<script src="https://www.w3schools.com/js/myScript1.js"></script> 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
-<script
-			  src="http://code.jquery.com/jquery-3.3.1.js"
-			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
+<script src="https://www.w3schools.com/js/myScript1.js"> </script> 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js'> </script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'> </script>
+<script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+crossorigin="anonymous"></script>
 
+<head>
 <script>
 
-        jQuery(document).ready(function($) {
+jQuery(document).ready(function($) {
           setInterval(function() {
             moveRight();
           }, 1500);
@@ -58,22 +57,22 @@
               function() {
                 $("#slider ul li:first-child").appendTo("#slider ul");
                 $("#slider ul").css("left", "");
-              }
-            );
+              });
           }
         
         });
-        
+
 </script>
+
 
 <script type="text/javascript">
 
 $(document).ready(function(){
-  $('.toggle').click(function(){
+            $('.toggle').click(function(){
             $('.toggle').toggleClass('active')
             $('body').toggleClass('night')
-        })
-    })
+        });
+    });
 
 </script>
 
