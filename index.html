@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/bootstrap.css">
 
-
+<script src="https://www.w3schools.com/js/myScript1.js"></script> 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>
 <script
@@ -19,13 +19,6 @@
         crossorigin="anonymous"></script>
         
 <script type="text/javascript">
-    $(document).ready(function(){
-      $('.toggle').on('touchstart click',function(){
-            $('.toggle').toggleClass('active')
-            $('body').toggleClass('night')
-        })
-    })
-
 
 jQuery(document).ready(function($) {
   setInterval(function() {
@@ -70,6 +63,14 @@ jQuery(document).ready(function($) {
   }
 
 });
+
+
+$(document).ready(function(){
+      $('.toggle').on('touchstart click',function(){
+            $('.toggle').toggleClass('active')
+            $('body').toggleClass('night')
+        })
+    })
 
 </script>
 
