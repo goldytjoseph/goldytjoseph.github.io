@@ -12,7 +12,7 @@ body.night
 }
 .toggle
 {
-    position: absolute;
+   
     top: 40px;
     right: 50px;
     background: #fff;
@@ -31,7 +31,7 @@ body.night
 .toggle:before
 {
     content: '';
-    position: absolute;
+    
     top: 2px;
     left: 2px;
     width: 16px;
