@@ -78,44 +78,29 @@ body.night .content h1, body.night .content p
 }
 
 #social #socialcontainer {
-  position: relative;
-  text-align: left;
+    top: 40px;
+    right: 50px;
+    position: relative;
+    text-align: left;
 }
 
 #social #socialcontainer ul {
-  text-align: left;
+    text-align: left;
 }
 
 #social #socialcontainer ul li {
-  float: right;
-  padding-left: 10px;
-  list-style-type: none;
-  text-align: left;
+    float: right;
+    padding-left: 10px;
+    list-style-type: none;
+    text-align: left;
 }
 
-#slider {
-    position: relative;
-    overflow: hidden;
-    margin: 20px auto 0 auto;    
-  }
-  
-#slider ul {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    height: 200px;
-    list-style: none;
-  }
-  
-#slider ul li {
-    position: relative;
-    display: block;
-    float: left;
-    margin: 0;
-    padding: 0;
-    width: 500px;
-    height: 300px;
+#footer{
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    height: 30px;
+    font-family: sans-serif;
     text-align: center;
-    line-height: 300px;
-  }
+}
   
