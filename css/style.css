@@ -73,24 +73,6 @@ body.night .content h1, body.night .content p
     color: #fff;
 }
 
-#social #socialcontainer {
-    top: 40px;
-    right: 50px;
-    position: relative;
-    text-align: left;
-}
-
-#social #socialcontainer ul {
-    text-align: left;
-}
-
-#social #socialcontainer ul li {
-    float: right;
-    padding-left: 10px;
-    list-style-type: none;
-    text-align: left;
-}
-
 .footer {
     position: fixed;
     left: 0;
