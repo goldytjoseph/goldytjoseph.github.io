@@ -51,25 +51,21 @@ body.night
 
 .content
 {
-    margin: 150px auto;
-    width: 1000px;
+    margin: auto;
+    width: 100%;
+    
 }
 
 .content h1
 {
-    margin: 0 0 20px;
-    padding: 0;
     color: #000;
     transition: 0.5s;
 }
 
 .content p
 {
-    margin: 0;
-    padding: 0;
     color: #000;
     transition: 0.5s;
-    font-size: 18px;
 }
 
 body.night .content h1, body.night .content p
