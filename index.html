@@ -1,164 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<meta name="author" content="Goldy Thundiyil Joseph">
-<title>Goldy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="author" content="Goldy Thundiyil Joseph">
+  <title>Goldy</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/bootstrap.css">
-
-<script src="https://www.w3schools.com/js/myScript1.js"> </script> 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js'> </script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'> </script>
-<script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-crossorigin="anonymous"></script>
-
-<script>
-
-jQuery(document).ready(function($) {
-          setInterval(function() {
-            moveRight();
-          }, 1500);
-        
-          var slideCount = $("#slider ul li").length;
-          var slideWidth = $("#slider ul li").width();
-          var slideHeight = $("#slider ul li").height();
-          var sliderUlWidth = slideCount * slideWidth;
-        
-          $("#slider").css({ width: slideWidth, height: slideHeight });
-        
-          $("#slider ul").css({ width: sliderUlWidth, marginLeft: -slideWidth });
-        
-          $("#slider ul li:last-child").prependTo("#slider ul");
-        
-          function moveLeft() {
-            $("#slider ul").animate(
-              {
-                left: +slideWidth
-              },
-              200,
-              function() {
-                $("#slider ul li:last-child").prependTo("#slider ul");
-                $("#slider ul").css("left", "");
-              }
-            );
-          }
-        
-          function moveRight() {
-            $("#slider ul").animate(
-              {
-                left: -slideWidth
-              },
-              200,
-              function() {
-                $("#slider ul li:first-child").appendTo("#slider ul");
-                $("#slider ul").css("left", "");
-              });
-          }
-        
-        });
-
-</script>
-
-
-<script type="text/javascript">
-
-$(document).ready(function(){
-            $('.toggle').click(function(){
-            $('.toggle').toggleClass('active')
-            $('body').toggleClass('night')
-        });
-    });
-
-</script>
-
+  <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
-
-<header>
             
-<div class="header"
-
-<!--start of header -->
-<div id="social">
-<div id="socialcontainer">
-<ul>
-<li> <a href="https://github.com/gol-dy"> <i class="fa fa-github"> </i> </a> </li>
-<li> <a href="https://www.linkedin.com/in/goldy-t-joseph-5b72b315a/"> <i class="fa fa-linkedin"> </i> </a> </li>
-<li> <a href="https://twitter.com/GoldyTJoseph"> <i class="fa fa-twitter"> </i> </a> </li>
-<li> <a href="https://www.facebook.com/Goldytjoseph"> <i class="fa fa-facebook"> </i> </a> </li>
-<li> <a href="https://www.instagram.com/st.badass/">  <i class="fa fa-instagram"> </i> </a> </li>
-
-</ul>
-                        
-</div>
-</div>
-</div>
-<div class="toggle">
-</div>
-  
-</header>
-<!--end of header -->
 
 <body>
 
-      <div id="slider">
-          <section>
-            <ul>
-              <!--start of slider-->
-      
-                  <li> GOLDY THUNDIYIL JOSEPH </li>
-      
-            
-      
-                  <li> 07 AUG 1996 </li>
-      
-      
-      
-                  <li> INDIAN </li>
-      
-      
-      
-                  <li> BIG BROTHER OF TWO </li>
-      
-            
-      
-                  <li> LOVE LINUX A LOT 🐧 </li>
-      
-      
-      
-                  <li> AN OCTOCAT FAN </li>
-      
-      
-       
-                  <li> LIKES TURTLE AND WASP </li>
-      
-      
-       
-                  <li> GEEK </li>
-            </ul></section>
+  <!--starting of header-->
+  <div class="header">
+    <div class="toggle"> </div>  
+    <div>
+      <div id="socialcontainer">
+        <ul>
+          <li> <a href="https://github.com/gol-dy"> <i class="fa fa-github"> </i> </a> </li>
+          <li> <a href="https://www.linkedin.com/in/goldy-t-joseph-5b72b315a/"> <i class="fa fa-linkedin"> </i> </a> </li>
+          <li> <a href="https://twitter.com/GoldyTJoseph"> <i class="fa fa-twitter"> </i> </a> </li>
+          <li> <a href="https://www.facebook.com/Goldytjoseph"> <i class="fa fa-facebook"> </i> </a> </li>
+          <li> <a href="https://www.instagram.com/st.badass/">  <i class="fa fa-instagram"> </i> </a> </li>    
+        </ul>
       </div>
+    </div>
+  </div>
 
-   <!--end of slider-->
+  <!--start of slider-->
+  <div>
+    <section>  
+    <span class="mySlides" > GOLDY THUNDIYIL JOSEPH </span>
+    <span class="mySlides" > 07 AUG 1996 </span>
+    <span class="mySlides" > INDIAN </span>
+    <span class="mySlides" > BIG BROTHER OF TWO </span>
+    <span class="mySlides" > LOVE LINUX A LOT 🐧 </span>
+    <span class="mySlides" > AN OCTOCAT FAN </span>
+    <span class="mySlides" >  LIKES TURTLE AND WASP </span>
+    <span class="mySlides" > GEEK </span>
+    </section>
+  </div>
+  <!--end of slider-->
 
-   <!--start of about-->
-<section>
-<div class="container">
-  <p> <small>I’m a computer science student, who can be an artist, teacher, chef, singer and dancer when mood strikes.</small> </p>
-  <p> <small>Linux, cybersecurity and networking are my interested areas.</small> </p>
-  <p> <small>I like to write scripts using Bash and Python, and I am so much addicted to terminal.</small> </p>
-  <p> <small>Thirst on getting knowledge and curiousity makes me self-taught.</small> </p>
-  <p> <small>fanboy of Nikola Tesla | Linus Torvalds | Albert Einstein | Richard Stallman | Dennis Ritchie </small> </p>
-   <!--end of about-->
-</div>
-</section>
+
+  <!--start of about-->
+  <div>
+    <section>
+    <div class="container">
+    <p> <small>I’m a computer science student, who can be an artist, teacher, chef, singer and dancer when mood strikes.</small> </p>
+    <p> <small>Linux, cybersecurity and networking are my interested areas.</small> </p>
+    <p> <small>I like to write scripts using Bash and Python, and I am so much addicted to terminal.</small> </p>
+    <p> <small>Thirst on getting knowledge and curiousity makes me self-taught.</small> </p>
+    <p> <small>fanboy of Nikola Tesla | Linus Torvalds | Albert Einstein | Richard Stallman | Dennis Ritchie </small> </p>
+    </section>
+  </div>
+  <!--end of about-->
 
 </body>
+
+
+<script>
+  // Automatic Slideshow - change image every 3 seconds
+  var myIndex = 0;
+  carousel();
+  
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 1000);
+  }
+</script>
+  
+<script type="text/javascript">
+    $(document).ready(function(){
+                $('.toggle').click(function(){
+                $('.toggle').toggleClass('active')
+                $('body').toggleClass('night')
+            });
+        });
+</script>
+
 
 <footer>
       <p> <small> property of <a href="https://gol-dy.github.io"> pac-man </a> </small> </p>
 </footer>
+
 </html>
