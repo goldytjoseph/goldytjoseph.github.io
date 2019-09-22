@@ -2,6 +2,14 @@
 header a{
     display: inline-block;
     width: 25px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 1%;
+}
+
+.social{
+    text-align: right; 
+    padding-right: 1%; 
 }
 
 body
@@ -29,6 +37,10 @@ body.night
     cursor: pointer;
     border-radius: 20px;
     transition: 0.5s;
+    float: left;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  
 }
 
 .toggle.active
