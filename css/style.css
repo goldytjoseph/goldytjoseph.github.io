@@ -91,6 +91,12 @@ body.night .content h1, body.night .content p
     color: #fff;
 }
 
+.sliding{
+ max-width: 100%;
+ height: 50%;
+ text-align: center;
+}
+
 .footer {
     position:absolute;
     bottom:0;
