@@ -6,10 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <meta name="author" content="Goldy Thundiyil Joseph">
   <title>Goldy</title>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
-
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'> </script>
   <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
@@ -27,24 +25,23 @@
 </header>
 
 <body>
-<!--start of slider-->
-  <div class="sliding">
-   
-    <span class="mySlides" > GOLDY THUNDIYIL JOSEPH </span>
-    <span class="mySlides" > 07 AUG 1996 </span>
-    <span class="mySlides" > INDIAN </span>
-    <span class="mySlides" > BIG BROTHER OF TWO </span>
-    <span class="mySlides" > LOVE LINUX A LOT 🐧 </span>
-    <span class="mySlides" > AN OCTOCAT FAN </span>
-    <span class="mySlides" > LIKES TURTLE AND WASP </span>
-    <span class="mySlides" > GEEK </span>
- 
+  <!--start of slider-->
+  <div class="slidercontainer">
+    <div class="sliding">
+      <span class="mySlides" > GOLDY THUNDIYIL JOSEPH </span>
+      <span class="mySlides" > 07 AUG 1996 </span>
+      <span class="mySlides" > INDIAN </span>
+      <span class="mySlides" > BIG BROTHER OF TWO </span>
+      <span class="mySlides" > LOVE LINUX A LOT 🐧 </span>
+      <span class="mySlides" > AN OCTOCAT FAN </span>
+      <span class="mySlides" > LIKES TURTLE AND WASP </span>
+      <span class="mySlides" > GEEK </span>
+    </div>
   </div>
 
   <!--start of about-->
   <div>
-    <section>
-    <div class="container">
+    <section class="information">
     <p> <small>I’m a computer science student, who can be an artist, teacher, chef, singer and dancer when mood strikes.</small> </p>
     <p> <small>Linux, cybersecurity and networking are my interested areas.</small> </p>
     <p> <small>I like to write scripts using Bash and Python, and I am so much addicted to terminal.</small> </p>
@@ -53,40 +50,36 @@
     </section>
   </div>
 
-
-<!--start of footer-->
-
-<div class="footer">
+  <!--start of footer-->
+  <div class="footer">
     <p> <small > property of <a href="https://gol-dy.github.io"></a> pac-man </small> </p>
-</div>
-
+  </div>
 </body>
 
 <script>
-  // Automatic Slideshow - change image every 1 seconds
-  var myIndex = 0;
-  carousel();
-  
-  function carousel() {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    for (i = 0; i < x.length; i++) {
-       x[i].style.display = "none";
-    }
-    myIndex++;
-    if (myIndex > x.length) {myIndex = 1}
-    x[myIndex-1].style.display = "block";
-    setTimeout(carousel, 1000);
+// Automatic Slideshow - change image every 1 seconds
+var myIndex = 0;
+carousel();
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}
+  x[myIndex-1].style.display = "block";
+  setTimeout(carousel, 1000);
   }
 </script>
   
 <script type="text/javascript">
-    $(document).ready(function(){
-                $('.toggle').click(function(){
-                $('.toggle').toggleClass('active')
-                $('body').toggleClass('night')
-            });
-        });
+  $(document).ready(function(){
+  $('.toggle').click(function(){
+  $('.toggle').toggleClass('active')
+  $('body').toggleClass('night')
+    });
+  });
 </script>
 
 </html>
