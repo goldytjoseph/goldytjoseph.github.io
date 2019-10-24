@@ -26,7 +26,7 @@
 
 <body>
   <!--start of slider-->
-  <div class="slidercontainer">
+  <div class="slidercontainer wrapper">
     <div class="sliding">
       <span class="mySlides" > GOLDY THUNDIYIL JOSEPH </span>
       <span class="mySlides" > 07 AUG 1996 </span>
@@ -54,32 +54,8 @@
   <div class="footer">
     <p> <small > property of <a href="https://gol-dy.github.io"></a> pac-man </small> </p>
   </div>
+
 </body>
-
-<script>
-// Automatic Slideshow - change image every 1 seconds
-var myIndex = 0;
-carousel();
-function carousel() {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  myIndex++;
-  if (myIndex > x.length) {myIndex = 1}
-  x[myIndex-1].style.display = "block";
-  setTimeout(carousel, 1000);
-  }
-</script>
-  
-<script type="text/javascript">
-  $(document).ready(function(){
-  $('.toggle').click(function(){
-  $('.toggle').toggleClass('active')
-  $('body').toggleClass('night')
-    });
-  });
-</script>
-
+<script type="text/javascript" src="javascript/dayandnight.js"> </script>
+<script type="text/javascript" src="javascript/slider.js"> </script>
 </html>
