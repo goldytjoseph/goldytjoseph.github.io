@@ -1,3 +1,3 @@
-# gol-dy.github.io
+# Personal Webpage source
 
-<a href="https://gol-dy.github.io">click here </a>
+<a href="https://goldytjoseph.github.io">click here </a>
