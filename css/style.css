@@ -11,16 +11,6 @@ header a {
     padding-right: 1%;
 }
 
-.information {
-    text-align: center;
-}
-
-.slidercontainer {
-    margin-top: 10%;
-    margin-left: 0%;
-    margin-right: 0%;
-    margin-bottom: 5%;
-}
 
 body {
     margin: 0;
@@ -73,17 +63,10 @@ body.night {
 .content {
     margin: auto;
     width: 100%;
-}
-
-.content h1 {
     color: #000;
     transition: 0.5s;
 }
 
-.content p {
-    color: #000;
-    transition: 0.5s;
-}
 
 body.night .content h1,
 body.night .content p {
