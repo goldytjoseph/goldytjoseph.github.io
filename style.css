@@ -1,0 +1,158 @@
+/* Basic reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body setup */
+body {
+    background-color: black; /* Terminal black background */
+    color: red; /* Red text */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for terminal feel */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    flex-direction: column; /* Stack text vertically */
+    text-align: center; /* Center the text */
+}
+
+/* Social Media Container */
+.social-media-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000; /* Make sure it's above other content */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Social Media Links Style */
+.social-icon {
+    font-size: 24px;
+    color: red;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+/* Social media icons hover effect */
+.social-icon:hover {
+    color: white; /* Change color on hover */
+}
+
+/* Animation container */
+.animation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Styling for each animated text section */
+.animated-section {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Styling for the animated text */
+.animated-text {
+    font-size: 24px;
+    white-space: nowrap; /* No wrapping of text */
+    border-right: 3px solid red; /* Simulate a terminal cursor */
+    padding-right: 10px; /* Make space for the cursor */
+    animation: blink 0.75s step-end infinite; /* Cursor blink */
+}
+
+/* Cursor blink effect */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+    100% {
+        border-color: red;
+    }
+}
+
+/* Styling for each paragraph in "About Me" section */
+p {
+    font-size: 18px;
+    margin: 10px 0;
+    white-space: nowrap; /* Ensure text doesn't wrap during animation */
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+
+    .social-media-container {
+        top: 15px;
+        left: 15px;
+    }
+
+    .social-icon {
+        font-size: 22px;
+    }
+
+    .animation-container {
+        padding: 10px;
+    }
+
+    .animated-text {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .social-media-container {
+        top: 10px;
+        left: 10px;
+    }
+
+    .social-icon {
+        font-size: 20px;
+    }
+
+    .animation-container {
+        padding: 5px;
+    }
+
+    .animated-text {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-media-container {
+        top: 5px;
+        left: 5px;
+    }
+
+    .social-icon {
+        font-size: 18px;
+    }
+
+    .animated-text {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}
