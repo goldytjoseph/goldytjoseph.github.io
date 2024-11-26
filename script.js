@@ -12,9 +12,11 @@ const sections = [
             "Mr.Gold | W0LF1E",
             "Hello! I’m Goldy. I'm an Indian guy who can be an artist, teacher, chef, singer and, dancer when the mood strikes me.",
             "Linux, Cyber Security and, networking are my interests.",
-            "I'm much CLI tied and, good at crafting utility scripts using Bash and Python.",
-            "Lust for learning and curiosity made me self-taught.",
-            "Mainly I focus on professional development and personal growth, so chasing learning curves and continuous self-improvement are equally important to me."
+            "c0MmAnDLiN3-JuNkIE",
+            "Weapon of Choice - Bash, PowerShell & Python",
+            "Learning is my fuel. Curiosity is my engine.",
+            "Google mentors me, ChatGPT's my partner in crime, and StackOverflow's my buddy.",
+            "Chasing New Skills and Life-Work Growth"
         ], // About me section as an array of individual sentences
         type: 'paragraphs', // Indicates this is multiple paragraphs to animate
     }
