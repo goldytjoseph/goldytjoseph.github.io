@@ -10,8 +10,10 @@ const sections = [
         text: [
             "About Me", // Subtitle (About Me)
             "Mr.Gold | W0LF1E",
-            "Hello! I’m Goldy. I'm an Indian guy who can be an artist, teacher, chef, singer and, dancer when the mood strikes me.",
-            "Linux, Cyber Security and, networking are my interests.",
+            "Cyber Security Researcher | Red Teamer",
+            "Hello! I’m Goldy. I'm an Indian guy who can be an artist, teacher, chef, singer and, dancer when the mood strikes.",
+            "Researching Malware Development & Red Teaming",
+            "Hack The Box <3",
             "c0MmAnDLiN3-JuNkIE",
             "Weapon of Choice - Bash, PowerShell & Python",
             "Learning is my fuel. Curiosity is my engine.",
