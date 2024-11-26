@@ -2,7 +2,7 @@
 const sections = [
     {
         id: 'name-section',
-        text: "Goldy Thundiyil Joseph", // Name section (Main title)
+        text: "Goldy T Joseph", // Name section (Main title)
         type: 'heading', // Indicates this is a heading (animate once and settle)
     },
     {
@@ -11,13 +11,13 @@ const sections = [
             "About Me", // Subtitle (About Me)
             "Mr.Gold | W0LF1E",
             "Cyber Security Researcher | Red Teamer",
-            "Hello! I’m Goldy. I'm an Indian guy who can be an artist, teacher, chef, singer and, dancer when the mood strikes.",
+            "An Indian guy who can be an artist, teacher, chef, singer and, dancer when the mood strikes.",
             "Researching Malware Development & Red Teaming",
             "Hack The Box <3",
             "c0MmAnDLiN3-JuNkIE",
             "Weapon of Choice - Bash, PowerShell & Python",
             "Learning is my fuel. Curiosity is my engine.",
-            "Google mentors me, ChatGPT's my partner in crime, and StackOverflow's my buddy.",
+            "Google = Mentor",
             "Chasing New Skills and Life-Work Growth"
         ], // About me section as an array of individual sentences
         type: 'paragraphs', // Indicates this is multiple paragraphs to animate
