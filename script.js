@@ -12,13 +12,8 @@ const sections = [
             "Mr.Gold | W0LF1E",
             "Cyber Security Researcher | Red Teamer",
             "An Indian guy who can be an artist, teacher, chef, singer and, dancer when the mood strikes.",
-            "Researching Malware Development & Red Teaming",
-            "Hack The Box <3",
-            "c0MmAnDLiN3-JuNkIE",
-            "Weapon of Choice - Bash, PowerShell & Python",
-            "Learning is my fuel. Curiosity is my engine.",
-            "Google = Mentor",
-            "Chasing New Skills and Life-Work Growth"
+            "Researching Malware Development, EDR Evasion & Red Teaming",
+            "Hack The Box <3"
         ], // About me section as an array of individual sentences
         type: 'paragraphs', // Indicates this is multiple paragraphs to animate
     }
