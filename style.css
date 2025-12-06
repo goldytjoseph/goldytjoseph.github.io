@@ -386,8 +386,29 @@ body.home-page {
     0% { opacity: 0.8; transform: scale(1); }
     100% { opacity: 1; transform: scale(0.98); }
 }
+
+/* =========================================
+   8. HACKER DECODE EFFECT
+   ========================================= */
+.hacker-effect {
+    font-family: 'JetBrains Mono', monospace; /* Monospace is crucial for glitch effects */
+    color: var(--text-white);
+    background: var(--blood-deep); /* Background highlight during glitch */
+    padding: 0 4px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+/* When the effect finishes or is idle */
+.hacker-effect.refined {
+    background: transparent;
+    color: var(--blood-bright);
+}
+
 /* ============================================================
-   8. RESPONSIVE UTILS
+   9. RESPONSIVE UTILS
    ============================================================ */
 @media (max-width: 768px) {
     .l-header { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
