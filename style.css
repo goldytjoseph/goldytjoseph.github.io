@@ -310,8 +310,42 @@ body.home-page {
     100% { opacity: 1; transform: translateY(0); }
 }
 
+/* =========================================
+   6. BADGE AREA STYLES
+   ========================================= */
+
+.badge-row {
+    margin-top: 2rem;
+    display: flex;
+    gap: 15px; /* Space between badges */
+    align-items: center;
+}
+
+.badge-img {
+    height: 60px; /* Adjust this size as needed */
+    width: auto;  /* Maintains aspect ratio */
+    opacity: 0.8;
+    transition: 0.3s ease;
+    /* Optional: Makes them grayscale until hover to fit the Vanta Black theme */
+    filter: grayscale(100%);
+}
+
+.badge-img:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: translateY(-2px);
+}
+
+/* Helper to space out the stats in the right column */
+.stat-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
 /* ============================================================
-   6. RESPONSIVE UTILS
+   7. RESPONSIVE UTILS
    ============================================================ */
 @media (max-width: 768px) {
     .l-header { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
