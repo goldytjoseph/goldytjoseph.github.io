@@ -407,8 +407,98 @@ body.home-page {
     color: var(--blood-bright);
 }
 
+/* =========================================
+   9. 3D IDENTITY FLIP EFFECT
+   ========================================= */
+
+/* The Container - Sets the Stage */
+.profile-flip-wrapper {
+    background-color: transparent;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Keeps it square */
+    perspective: 1000px; /* Essential for 3D effect */
+    margin-bottom: 20px;
+}
+
+/* The Inner Card - This actually rotates */
+.profile-flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy "Tactical" snap */
+    transform-style: preserve-3d;
+    cursor: crosshair; /* Adds to the targeting/sniper vibe */
+}
+
+/* Trigger the flip on hover */
+.profile-flip-wrapper:hover .profile-flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* Shared styles for both Front and Back faces */
+.profile-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border: 1px solid #1a1a1a;
+    overflow: hidden;
+}
+
+/* IMAGE STYLING */
+.profile-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- FRONT FACE (Standard) --- */
+.profile-front {
+    background-color: var(--void-gray);
+}
+/* Keep the Front Grayscale (Noir look) */
+.profile-front img {
+    filter: grayscale(100%) contrast(110%);
+    transition: 0.5s;
+}
+
+/* --- BACK FACE (The Reveal) --- */
+.profile-back {
+    background-color: var(--vanta-black);
+    transform: rotateY(180deg); /* Starts flipped */
+    border-color: var(--blood-bright); /* Red border warning on flip */
+    box-shadow: 0 0 20px rgba(204, 0, 0, 0.2); /* Red Glow */
+}
+/* The Back image is full color or high contrast */
+.profile-back img {
+    filter: grayscale(0%) contrast(120%) brightness(1.1);
+}
+
+/* CREATIVE EXTRA: A scanning laser line on the front image */
+.scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px white;
+    animation: scan 3s infinite linear;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@keyframes scan {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% { top: 100%; opacity: 0; }
+}
+
 /* ============================================================
-   9. RESPONSIVE UTILS
+   10. RESPONSIVE UTILS
    ============================================================ */
 @media (max-width: 768px) {
     .l-header { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
