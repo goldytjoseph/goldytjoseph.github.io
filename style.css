@@ -1,147 +1,175 @@
-/* --- 1. Global Reset and Base Styles --- */
+/* IMPORT FONTS: JetBrains Mono (Code) & Inter (Body) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-    --color-background: #0d0d0d;
-    --color-text: #e0e0e0;
-    --color-faint: #8a8a8a;
-    --font-primary: sans-serif; /* Replace with a specific font if you use webfonts */
-    --padding-main: 3vw;
+    /* PALETTE */
+    --vanta-black: #000000;
+    --void-gray: #050505; /* Slightly lighter for card backgrounds */
+    --blood-deep: #660000; 
+    --blood-bright: #cc0000; /* Highlight red */
+    --text-white: #f0f0f0;
+    --text-mute: #666666;
+    
+    /* FONTS */
+    --font-head: 'JetBrains Mono', monospace;
+    --font-body: 'Inter', sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* RESET */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-body.faint-aesthetic {
-    font-family: var(--font-primary);
-    background-color: var(--color-background);
-    color: var(--color-text);
+body {
+    background-color: var(--vanta-black);
+    color: var(--text-white);
+    font-family: var(--font-body);
     line-height: 1.6;
-    min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-/* Base text styles */
-h1, h2, h3 {
-    font-weight: 300; /* Light weight for clean look */
-    letter-spacing: 0.05em;
-    color: var(--color-text);
-    margin-bottom: 0.5em;
+/* CRT SCANLINE OVERLAY (Optional: Adds texture to the black) */
+body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
 }
 
-a {
-    color: var(--color-text);
-    text-decoration: none;
-    transition: color 0.3s;
-}
+/* LINKS */
+a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+a:hover { color: var(--blood-bright); text-shadow: 0 0 8px var(--blood-deep); }
 
-a:hover {
-    color: var(--color-faint);
-}
-
-/* --- 2. Header and Navigation Styles (l-header, l-menu) --- */
-
+/* HEADER */
 .l-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* Align elements to the bottom */
-    padding: var(--padding-main);
-    border-bottom: 1px solid var(--color-faint);
+    align-items: center;
+    padding: 2rem 5%;
+    border-bottom: 1px solid var(--blood-deep);
+    background: rgba(0, 0, 0, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .l-header__name a {
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.l-header__text {
-    font-size: 0.8rem;
-    color: var(--color-faint);
-    margin-top: 0.5em;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--blood-bright);
+    letter-spacing: -1px;
 }
 
 .l-menu .links {
-    font-size: 0.9rem;
     display: flex;
-    gap: 1.5rem;
-    letter-spacing: 0.1em;
+    gap: 20px;
 }
 
-.l-menu a {
-    padding-right: 0.5rem;
-    position: relative;
-    /* Adding the comma separation look */
+.l-menu .links a {
+    font-family: var(--font-head);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-mute);
 }
 
-.l-menu a:not(:last-child)::after {
-    content: ',';
-    color: var(--color-text);
-    position: absolute;
-    right: 0;
+.l-menu .links a.is-current {
+    color: var(--text-white);
+    border-bottom: 1px solid var(--blood-bright);
 }
 
-/* --- 3. Main Content & Grid Layout (p-bio) --- */
-
-.main {
-    padding: var(--padding-main);
-}
-
-.p-bio-main__inner {
+/* RESPONSIVE LAYOUT CONTAINER */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 20px;
     display: grid;
-    /* Define a flexible grid layout for the content items */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px; 
-    margin-top: 50px;
+    /* Auto-responsive grid: Creates columns that are at least 300px wide */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem;
 }
 
-.p-bio-main__item {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--color-faint);
-}
-
-.p-bio-main__item h2 {
+/* TYPOGRAPHY */
+.section-title {
+    grid-column: 1 / -1; /* Spans full width */
+    font-family: var(--font-head);
+    color: var(--blood-bright);
     font-size: 1.2rem;
-    color: var(--color-faint);
-    margin-bottom: 0.5em;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--blood-deep);
+    padding-left: 15px;
 }
 
-.p-bio-main__item p {
-    font-size: 1rem;
+h2, h3 { font-family: var(--font-head); margin-bottom: 1rem; }
+p { color: var(--text-mute); margin-bottom: 1.5rem; }
+strong { color: var(--text-white); }
+
+/* CARDS */
+.card {
+    background: var(--void-gray);
+    border: 1px solid #1a1a1a;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Item 03 (Image Placeholder) styling */
-.p-bio-main__area {
-    /* Make this section stand out */
-    grid-column: span 1; /* Default to 1 column */
-    background-color: #1a1a1a;
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card:hover {
+    border-color: var(--blood-deep);
+    box-shadow: 0 0 20px rgba(138, 3, 3, 0.2);
+    transform: translateY(-5px);
 }
 
-.p-bio-main__area img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* A little blood red corner accent on cards */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0%; height: 2px;
+    background: var(--blood-bright);
+    transition: width 0.3s ease;
+}
+.card:hover::before { width: 100%; }
+
+/* UTILS */
+.full-width { grid-column: 1 / -1; }
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--blood-deep);
+    color: var(--blood-bright);
+    font-family: var(--font-head);
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+.btn:hover {
+    background: var(--blood-deep);
+    color: var(--text-white);
 }
 
-
-/* --- 4. Footer --- */
-
+/* FOOTER */
 .l-footer {
     text-align: center;
-    padding: 20px var(--padding-main);
-    font-size: 0.7rem;
-    color: var(--color-faint);
-    margin-top: 50px;
+    padding: 3rem 0;
+    border-top: 1px solid #111;
+    font-family: var(--font-head);
+    font-size: 0.75rem;
+    color: var(--text-mute);
 }
 
-/* --- 5. Responsive Adjustments --- */
-@media (min-width: 1024px) {
-    /* In large screens, make the image section wider */
-    .p-bio-main__area {
-        grid-column: span 2; 
+/* MOBILE OPTIMIZATIONS */
+@media (max-width: 768px) {
+    .l-header {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
     }
+    .l-menu .links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .container { padding-top: 2rem; }
 }
