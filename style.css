@@ -344,8 +344,50 @@ body.home-page {
     margin-top: 20px;
 }
 
+/* =========================================
+   7. SPECIAL EFFECT: THE VOID TEXT
+   ========================================= */
+
+.void-text {
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--text-white);
+    z-index: 1;
+    padding: 0 2px; /* Slight breathing room for the effect */
+}
+
+/* The Vignette Overlay */
+.void-text::after {
+    content: '';
+    position: absolute;
+    inset: 0; /* Covers the text perfectly */
+    z-index: 2;
+    pointer-events: none; /* Allows text selection through the layer */
+    
+    /* THE LOGIC:
+       1. Center is transparent (Text is clean/sharp).
+       2. Mid-point introduces the "Dark Blood Red" tone for depth.
+       3. Edges are pure Vanta Black, effectively "collapsing" the contrast.
+    */
+    background: radial-gradient(
+        circle at center,
+        transparent 50%, 
+        rgba(40, 0, 0, 0.6) 85%, 
+        var(--vanta-black) 100%
+    );
+    
+    /* Optional: A subtle pulse makes the darkness feel "alive" */
+    animation: void-pulse 4s infinite alternate ease-in-out;
+}
+
+@keyframes void-pulse {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(0.98); }
+}
 /* ============================================================
-   7. RESPONSIVE UTILS
+   8. RESPONSIVE UTILS
    ============================================================ */
 @media (max-width: 768px) {
     .l-header { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
