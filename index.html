@@ -1840,7 +1840,7 @@ body::after {
         }
         _gPts.push({
           x, y,
-          sz: 1 + Math.random() * 4,
+          sz: 0.4 + Math.random() * 1.1,
           ph: Math.random() * Math.PI * 2,
           sp: .25 + Math.random() * .7,
           col: _gCols[Math.floor(Math.random() * _gCols.length)],
@@ -1863,9 +1863,9 @@ body::after {
         if (p.y < -20) { p.y = H + 20; p.x = Math.random() * W; }
         if (op < .03) continue;
         _gCtx.save();
-        _gCtx.globalAlpha = op * .78;
+        _gCtx.globalAlpha = op * .55;
         _gCtx.shadowColor = p.col;
-        _gCtx.shadowBlur  = p.sz * 5;
+        _gCtx.shadowBlur  = p.sz * 4;
         _gCtx.fillStyle   = p.col;
         _gCtx.beginPath();
         _gCtx.arc(p.x, p.y, p.sz, 0, Math.PI * 2);
