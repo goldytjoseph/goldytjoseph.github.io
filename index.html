@@ -1810,7 +1810,7 @@ body::after {
     let   _gPts = [];
     let   _gW   = 0, _gH = 0;
 
-    const _gCols = ['#f5d678','#c6a04b','#e8c05a','#ffeebb','#e0b84a','#ffffff'];
+    const _gCols = ['#f5d678','#c6a04b','#e8c05a','#ffeebb','#e0b84a','#d49d3a'];
 
     const _gMk = () => {
       if (!_gc) return;
@@ -1821,7 +1821,7 @@ body::after {
       _gCtx.setTransform(dpr, 0, 0, dpr, 0, 0); // reset + scale; safe on resize
       _gPts = [];
       const W = _gW, H = _gH;
-      for (let i = 0; i < 85; i++) {
+      for (let i = 0; i < 90; i++) {
         let x, y;
         const r = Math.random();
         if (r < 0.35) {
@@ -1838,18 +1838,14 @@ body::after {
         } else {
           x = Math.random() * W; y = Math.random() * H;
         }
-        const tp = i < 6 ? 2 : i < 30 ? 1 : 0; // 2=flare,1=spark,0=dot
         _gPts.push({
           x, y,
-          sz: tp===2 ? 9+Math.random()*8 : tp===1 ? 2.5+Math.random()*4 : .8+Math.random()*1.6,
+          sz: 1 + Math.random() * 4,
           ph: Math.random() * Math.PI * 2,
           sp: .25 + Math.random() * .7,
           col: _gCols[Math.floor(Math.random() * _gCols.length)],
-          tp,
           mx: (Math.random() - .5) * .06,
           my: -(Math.random() * .04 + .005),
-          rot: Math.random() * Math.PI,
-          rs: (Math.random() - .5) * .008,
         });
       }
     };
@@ -1861,53 +1857,19 @@ body::after {
       const now = ts * .001;
       for (const p of _gPts) {
         const op = (1 + Math.sin(now * p.sp + p.ph)) / 2;
-        p.x += p.mx; p.y += p.my; p.rot += p.rs;
+        p.x += p.mx; p.y += p.my;
         if (p.x < -20) p.x = W + 20;
         if (p.x > W + 20) p.x = -20;
         if (p.y < -20) { p.y = H + 20; p.x = Math.random() * W; }
         if (op < .03) continue;
-        const maxA = p.tp===2 ? .9 : p.tp===1 ? .72 : .48;
-        const a = op * maxA;
         _gCtx.save();
-        _gCtx.translate(p.x, p.y);
-        _gCtx.globalAlpha = a;
-        if (p.tp === 0) {
-          _gCtx.fillStyle = p.col;
-          _gCtx.beginPath();
-          _gCtx.arc(0, 0, p.sz, 0, Math.PI * 2);
-          _gCtx.fill();
-        } else {
-          _gCtx.rotate(p.rot);
-          const sz = p.sz * (.4 + op * .6);
-          const sl = sz * (p.tp===2 ? 2.0 : 1.5);
-          const ss = sz * .85;
-          _gCtx.shadowColor = p.col;
-          _gCtx.shadowBlur  = sz * 2.5;
-          _gCtx.fillStyle   = p.col;
-          _gCtx.beginPath();
-          _gCtx.arc(0, 0, sz * .18, 0, Math.PI * 2);
-          _gCtx.fill();
-          _gCtx.shadowBlur = 0;
-          _gCtx.strokeStyle = p.col;
-          _gCtx.lineCap     = 'round';
-          _gCtx.lineWidth   = Math.max(.5, sz * .09);
-          _gCtx.beginPath();
-          _gCtx.moveTo(0, -sl); _gCtx.lineTo(0, sl);
-          _gCtx.moveTo(-ss, 0); _gCtx.lineTo(ss, 0);
-          _gCtx.stroke();
-          if (p.tp === 2) {
-            _gCtx.lineWidth = Math.max(.3, sz * .05);
-            const d = sz * .72;
-            _gCtx.beginPath();
-            _gCtx.moveTo(-d,-d); _gCtx.lineTo(d,d);
-            _gCtx.moveTo(d,-d);  _gCtx.lineTo(-d,d);
-            _gCtx.stroke();
-          }
-          _gCtx.fillStyle = '#ffffff';
-          _gCtx.beginPath();
-          _gCtx.arc(0, 0, Math.max(.4, sz * .14), 0, Math.PI * 2);
-          _gCtx.fill();
-        }
+        _gCtx.globalAlpha = op * .78;
+        _gCtx.shadowColor = p.col;
+        _gCtx.shadowBlur  = p.sz * 5;
+        _gCtx.fillStyle   = p.col;
+        _gCtx.beginPath();
+        _gCtx.arc(p.x, p.y, p.sz, 0, Math.PI * 2);
+        _gCtx.fill();
         _gCtx.restore();
       }
       _gRaf = requestAnimationFrame(_gFrame);
