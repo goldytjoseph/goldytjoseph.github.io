@@ -990,10 +990,19 @@ body::after {
 ._v.playing ._vesc { color: rgba(255,255,255,0.2); }
 ._vesc:hover { color: rgba(255,255,255,0.65) !important; }
 
+/* Glitter canvas */
+#_vglit {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 3; pointer-events: none;
+  opacity: 0; transition: opacity 2s ease;
+}
+._v.playing #_vglit { opacity: 1; }
+
 /* Loading pulse */
 @keyframes _vpulse { 0%,100%{opacity:.2} 50%{opacity:.6} }
 ._vload {
-  position: absolute; z-index: 3;
+  position: absolute; z-index: 5;
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
   color: rgba(255,255,255,0.45); text-transform: uppercase;
   animation: _vpulse 1.6s ease-in-out infinite;
@@ -1630,6 +1639,7 @@ body::after {
     <div class="_vvig"></div>
     <div class="_vlt"></div>
     <div class="_vlb"></div>
+    <canvas id="_vglit" aria-hidden="true"></canvas>
     <div class="_vload" id="_vload">loading</div>
     <button class="_vesc" aria-label="Close">esc</button>
   </div>
@@ -1790,6 +1800,124 @@ body::after {
 
     let _ul = false;
 
+    /* ── glitter particle system ──────────────────────────── */
+    const _gc   = document.getElementById('_vglit');
+    const _gCtx = _gc ? _gc.getContext('2d') : null;
+    let   _gRaf = null;
+    let   _gPts = [];
+
+    const _gCols = ['#f5d678','#c6a04b','#e8c05a','#ffeebb','#e0b84a','#ffffff'];
+
+    const _gMk = () => {
+      if (!_gc) return;
+      _gc.width  = innerWidth;
+      _gc.height = innerHeight;
+      _gPts = [];
+      const W = _gc.width, H = _gc.height;
+      for (let i = 0; i < 85; i++) {
+        let x, y;
+        const r = Math.random();
+        if (r < 0.35) {
+          x = Math.random() < .5 ? Math.random() * W * .28 : W - Math.random() * W * .28;
+          y = Math.random() < .5 ? Math.random() * H * .28 : H - Math.random() * H * .28;
+        } else if (r < 0.6) {
+          if (Math.random() < .5) {
+            x = Math.random() * W;
+            y = Math.random() < .5 ? Math.random() * H * .1 : H - Math.random() * H * .1;
+          } else {
+            x = Math.random() < .5 ? Math.random() * W * .1 : W - Math.random() * W * .1;
+            y = Math.random() * H;
+          }
+        } else {
+          x = Math.random() * W; y = Math.random() * H;
+        }
+        const tp = i < 6 ? 2 : i < 30 ? 1 : 0; // 2=flare,1=spark,0=dot
+        _gPts.push({
+          x, y,
+          sz: tp===2 ? 9+Math.random()*8 : tp===1 ? 2.5+Math.random()*4 : .8+Math.random()*1.6,
+          ph: Math.random() * Math.PI * 2,
+          sp: .25 + Math.random() * .7,
+          col: _gCols[Math.floor(Math.random() * _gCols.length)],
+          tp,
+          mx: (Math.random() - .5) * .06,
+          my: -(Math.random() * .04 + .005),
+          rot: Math.random() * Math.PI,
+          rs: (Math.random() - .5) * .008,
+        });
+      }
+    };
+
+    const _gFrame = (ts) => {
+      if (!_gCtx) return;
+      const W = _gc.width, H = _gc.height;
+      _gCtx.clearRect(0, 0, W, H);
+      const now = ts * .001;
+      for (const p of _gPts) {
+        const op = (1 + Math.sin(now * p.sp + p.ph)) / 2;
+        p.x += p.mx; p.y += p.my; p.rot += p.rs;
+        if (p.x < -20) p.x = W + 20;
+        if (p.x > W + 20) p.x = -20;
+        if (p.y < -20) { p.y = H + 20; p.x = Math.random() * W; }
+        if (op < .03) continue;
+        const maxA = p.tp===2 ? .9 : p.tp===1 ? .72 : .48;
+        const a = op * maxA;
+        _gCtx.save();
+        _gCtx.translate(p.x, p.y);
+        _gCtx.globalAlpha = a;
+        if (p.tp === 0) {
+          _gCtx.fillStyle = p.col;
+          _gCtx.beginPath();
+          _gCtx.arc(0, 0, p.sz, 0, Math.PI * 2);
+          _gCtx.fill();
+        } else {
+          _gCtx.rotate(p.rot);
+          const sz = p.sz * (.4 + op * .6);
+          const sl = sz * (p.tp===2 ? 2.0 : 1.5);
+          const ss = sz * .85;
+          _gCtx.shadowColor = p.col;
+          _gCtx.shadowBlur  = sz * 2.5;
+          _gCtx.fillStyle   = p.col;
+          _gCtx.beginPath();
+          _gCtx.arc(0, 0, sz * .18, 0, Math.PI * 2);
+          _gCtx.fill();
+          _gCtx.shadowBlur = 0;
+          _gCtx.strokeStyle = p.col;
+          _gCtx.lineCap     = 'round';
+          _gCtx.lineWidth   = Math.max(.5, sz * .09);
+          _gCtx.beginPath();
+          _gCtx.moveTo(0, -sl); _gCtx.lineTo(0, sl);
+          _gCtx.moveTo(-ss, 0); _gCtx.lineTo(ss, 0);
+          _gCtx.stroke();
+          if (p.tp === 2) {
+            _gCtx.lineWidth = Math.max(.3, sz * .05);
+            const d = sz * .72;
+            _gCtx.beginPath();
+            _gCtx.moveTo(-d,-d); _gCtx.lineTo(d,d);
+            _gCtx.moveTo(d,-d);  _gCtx.lineTo(-d,d);
+            _gCtx.stroke();
+          }
+          _gCtx.fillStyle = '#ffffff';
+          _gCtx.beginPath();
+          _gCtx.arc(0, 0, Math.max(.4, sz * .14), 0, Math.PI * 2);
+          _gCtx.fill();
+        }
+        _gCtx.restore();
+      }
+      _gRaf = requestAnimationFrame(_gFrame);
+    };
+
+    const _gStart = () => {
+      if (!_gCtx || reduce) return;
+      _gMk();
+      _gRaf = requestAnimationFrame(_gFrame);
+    };
+    const _gStop = () => {
+      if (_gRaf) { cancelAnimationFrame(_gRaf); _gRaf = null; }
+      if (_gCtx) _gCtx.clearRect(0, 0, _gc.width, _gc.height);
+    };
+    window.addEventListener('resize', () => { if (_gRaf) { _gStop(); _gStart(); } });
+    /* ──────────────────────────────────────────────────────── */
+
     const _show = () => {
       if (_ul) return;
       _ul = true;
@@ -1802,6 +1930,7 @@ body::after {
       _vid.addEventListener('playing', () => {
         if (_ldr) _ldr.style.display = 'none';
         _ov.classList.add('playing');
+        _gStart();
       }, { once: true });
 
       // Show error if video fails to load
@@ -1814,6 +1943,7 @@ body::after {
 
     const _hide = () => {
       if (!_ul) return;
+      _gStop();
       _ov.classList.remove('active', 'playing');
       _ov.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
