@@ -1793,19 +1793,20 @@ body::after {
       _ov.setAttribute('aria-hidden', 'false');
       _ov.classList.add('active');
       document.body.style.overflow = 'hidden';
+      if (_ldr) _ldr.style.display = 'block';
 
-      const onReady = () => {
+      const reveal = () => {
         if (_ldr) _ldr.style.display = 'none';
         _ov.classList.add('playing');
-        _vid.play().catch(() => {});
       };
 
-      if (_vid.readyState >= 3) {
-        onReady();
+      // play() starts loading automatically even with preload="none"
+      // and resolves when playback actually begins
+      const p = _vid.play();
+      if (p && typeof p.then === 'function') {
+        p.then(reveal).catch(reveal);
       } else {
-        if (_ldr) _ldr.style.display = 'block';
-        _vid.load();
-        _vid.addEventListener('canplay', onReady, { once: true });
+        _vid.addEventListener('playing', reveal, { once: true });
       }
     };
 
