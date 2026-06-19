@@ -149,9 +149,10 @@
     const _ldr = document.getElementById('_vload');
     if (!_ov || !_vid) return;
 
-    let _ul = false;
+    let _ul        = false;
     let _onPlaying = null;
     let _onError   = null;
+    let _hideTimer = null;
 
     /* ── glitter particle system ──────────────────────────── */
     const _gc   = document.getElementById('_vglit');
@@ -239,6 +240,7 @@
 
     const _show = () => {
       if (_ul) return;
+      clearTimeout(_hideTimer); _hideTimer = null;
       _ul = true;
       _ov.setAttribute('aria-hidden', 'false');
       _ov.classList.add('active');
@@ -259,7 +261,11 @@
       _vid.addEventListener('playing', _onPlaying, { once: true });
       _vid.addEventListener('error',   _onError,   { once: true });
 
-      _vid.play().catch(() => {});
+      _vid.play().catch(() => {
+        if (_onPlaying) { _vid.removeEventListener('playing', _onPlaying); _onPlaying = null; }
+        if (_onError)   { _vid.removeEventListener('error',   _onError);   _onError   = null; }
+        if (_ldr && _ul) _ldr.textContent = 'tap to play';
+      });
     };
 
     const _hide = () => {
@@ -271,7 +277,8 @@
       _ov.classList.remove('active', 'playing');
       _ov.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-      setTimeout(() => {
+      _hideTimer = setTimeout(() => {
+        _hideTimer = null;
         _ul = false;
         _vid.pause();
         _vid.currentTime = 0;
