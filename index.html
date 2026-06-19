@@ -1623,7 +1623,10 @@ body::after {
 <!-- cinematic easter egg -->
 <div id="_v" class="_v" role="dialog" aria-modal="true" aria-label="Goldy logo" aria-hidden="true">
   <div class="_vcin">
-    <video id="_vv" src="goldy-logo.mp4" preload="none" playsinline muted loop aria-hidden="true"></video>
+    <video id="_vv" preload="none" playsinline muted loop aria-hidden="true">
+      <source src="goldy-logo.webm" type="video/webm">
+      <source src="goldy-logo.mp4" type="video/mp4">
+    </video>
     <div class="_vvig"></div>
     <div class="_vlt"></div>
     <div class="_vlb"></div>
@@ -1795,19 +1798,18 @@ body::after {
       document.body.style.overflow = 'hidden';
       if (_ldr) _ldr.style.display = 'block';
 
-      const reveal = () => {
+      // Reveal only when video is genuinely rendering frames
+      _vid.addEventListener('playing', () => {
         if (_ldr) _ldr.style.display = 'none';
         _ov.classList.add('playing');
-      };
+      }, { once: true });
 
-      // play() starts loading automatically even with preload="none"
-      // and resolves when playback actually begins
-      const p = _vid.play();
-      if (p && typeof p.then === 'function') {
-        p.then(reveal).catch(reveal);
-      } else {
-        _vid.addEventListener('playing', reveal, { once: true });
-      }
+      // Show error if video fails to load
+      _vid.addEventListener('error', () => {
+        if (_ldr) { _ldr.textContent = 'video unavailable'; }
+      }, { once: true });
+
+      _vid.play().catch(() => {});
     };
 
     const _hide = () => {
