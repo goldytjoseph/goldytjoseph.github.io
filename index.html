@@ -940,6 +940,7 @@ body::after {
   position: fixed; inset: 0; z-index: 9999;
   background: #161616;
   opacity: 0; pointer-events: none;
+  isolation: isolate;
   transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1);
 }
 ._v.active { opacity: 1; pointer-events: all; }
@@ -993,8 +994,8 @@ body::after {
 /* Glitter canvas */
 #_vglit {
   position: absolute; inset: 0;
-  width: 100%; height: 100%;
   z-index: 3; pointer-events: none;
+  mix-blend-mode: screen;
   opacity: 0; transition: opacity 2s ease;
 }
 ._v.playing #_vglit { opacity: 1; }
@@ -1799,21 +1800,27 @@ body::after {
     if (!_ov || !_vid) return;
 
     let _ul = false;
+    let _onPlaying = null;
+    let _onError   = null;
 
     /* ── glitter particle system ──────────────────────────── */
     const _gc   = document.getElementById('_vglit');
     const _gCtx = _gc ? _gc.getContext('2d') : null;
     let   _gRaf = null;
     let   _gPts = [];
+    let   _gW   = 0, _gH = 0;
 
     const _gCols = ['#f5d678','#c6a04b','#e8c05a','#ffeebb','#e0b84a','#ffffff'];
 
     const _gMk = () => {
       if (!_gc) return;
-      _gc.width  = innerWidth;
-      _gc.height = innerHeight;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      _gW = innerWidth; _gH = innerHeight;
+      _gc.width  = Math.round(_gW * dpr);
+      _gc.height = Math.round(_gH * dpr);
+      _gCtx.setTransform(dpr, 0, 0, dpr, 0, 0); // reset + scale; safe on resize
       _gPts = [];
-      const W = _gc.width, H = _gc.height;
+      const W = _gW, H = _gH;
       for (let i = 0; i < 85; i++) {
         let x, y;
         const r = Math.random();
@@ -1849,7 +1856,7 @@ body::after {
 
     const _gFrame = (ts) => {
       if (!_gCtx) return;
-      const W = _gc.width, H = _gc.height;
+      const W = _gW, H = _gH;
       _gCtx.clearRect(0, 0, W, H);
       const now = ts * .001;
       for (const p of _gPts) {
@@ -1913,7 +1920,7 @@ body::after {
     };
     const _gStop = () => {
       if (_gRaf) { cancelAnimationFrame(_gRaf); _gRaf = null; }
-      if (_gCtx) _gCtx.clearRect(0, 0, _gc.width, _gc.height);
+      if (_gCtx) _gCtx.clearRect(0, 0, _gW, _gH);
     };
     window.addEventListener('resize', () => { if (_gRaf) { _gStop(); _gStart(); } });
     /* ──────────────────────────────────────────────────────── */
@@ -1924,25 +1931,30 @@ body::after {
       _ov.setAttribute('aria-hidden', 'false');
       _ov.classList.add('active');
       document.body.style.overflow = 'hidden';
-      if (_ldr) _ldr.style.display = 'block';
+      if (_ldr) { _ldr.textContent = 'loading'; _ldr.style.display = 'block'; }
 
       // Reveal only when video is genuinely rendering frames
-      _vid.addEventListener('playing', () => {
+      _onPlaying = () => {
+        _onPlaying = null;
         if (_ldr) _ldr.style.display = 'none';
         _ov.classList.add('playing');
         _gStart();
-      }, { once: true });
-
-      // Show error if video fails to load
-      _vid.addEventListener('error', () => {
-        if (_ldr) { _ldr.textContent = 'video unavailable'; }
-      }, { once: true });
+      };
+      _onError = () => {
+        _onError = null;
+        if (_ldr && _ul) { _ldr.textContent = 'video unavailable'; }
+      };
+      _vid.addEventListener('playing', _onPlaying, { once: true });
+      _vid.addEventListener('error',   _onError,   { once: true });
 
       _vid.play().catch(() => {});
     };
 
     const _hide = () => {
       if (!_ul) return;
+      // Remove any pending one-shot listeners to prevent stale callbacks
+      if (_onPlaying) { _vid.removeEventListener('playing', _onPlaying); _onPlaying = null; }
+      if (_onError)   { _vid.removeEventListener('error',   _onError);   _onError   = null; }
       _gStop();
       _ov.classList.remove('active', 'playing');
       _ov.setAttribute('aria-hidden', 'true');
